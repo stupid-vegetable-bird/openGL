@@ -99,4 +99,4 @@ void drawRhombus(GLfloat color[]) {
 # 三、实验过程
 
 ---
-### 遇到的问题
+# 遇到的问题
