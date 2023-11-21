@@ -1,4 +1,4 @@
-
+# 一、基本知识
 ```C++
 #include<GL/glut.h>
 void init() {
