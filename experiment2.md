@@ -90,3 +90,13 @@ void drawRhombus(GLfloat color[]) {
 - v:Vector
   - omit 'v' for scalar form
   - glVertex2f(x,y);
+
+# 二、实验内容
+在一个窗口内：  
+1. 画一个三角形，三个顶点设置三个不同的颜色，其余部分的颜色由系统自动填充
+2. 画一个纯色的圆形
+
+# 三、实验过程
+
+---
+### 遇到的问题
