@@ -73,7 +73,7 @@ void drawRhombus(GLfloat color[]) {
 ```
 
 #### OpenGL Command Formats
-glVertex3fv(v)
+`glVertex3fv(v)`
 - 3:Number of components
   - 2-(x,y)
   - 3-(x,y,z)
