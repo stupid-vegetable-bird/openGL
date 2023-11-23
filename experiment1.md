@@ -3,7 +3,7 @@
 - 安装GLUT工具包
   - http://www.opengl.org/resources/libraries/glut/glutdlls37beta.zip
 - 配置环境
-  - https://blog.csdn.net/weixin_41962350/article/details/109345558
+  - [Microsoft Visual Studio](https://blog.csdn.net/weixin_41962350/article/details/109345558)
 # 二、测试
 - 创建一个控制台应用
 - 输入以下代码做测试
