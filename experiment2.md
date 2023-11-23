@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 - glutDisplayFunc:display callback
 - glutMainLoop:enter infinite event loop
 
-### 基本图形
+### （一）基本图形
 - GL_POINTS
 - GL_LINES
 - GL_LINE_STRIP
@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
 - GL_QUADS
 - GL_QUAD_STRIP
 
-### 定义基本图形
+### （二）定义基本图形
 ```C++
 // primType determines how vertices are combined
 glBegin(primType);
