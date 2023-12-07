@@ -17,7 +17,7 @@ void init() {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	// define window properties 配置窗口属性
+	// define window properties
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("simple");
