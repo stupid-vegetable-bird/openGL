@@ -15,14 +15,14 @@ void init() {
 }
 
 void display(){
-   // 清空颜色缓冲区和深度缓冲区
-   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	// 清空颜色缓冲区和深度缓冲区
+	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-   // 绘制图形
-   glutSolidSphere (1.0, 20, 16);
+	// 绘制图形
+	glutSolidSphere (1.0, 20, 16);
    
-   // 刷新绘图命令队列
-   glFlush ();
+	// 刷新绘图命令队列
+	glFlush ();
 }
 
 int main(int argc, char** argv) {
