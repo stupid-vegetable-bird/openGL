@@ -21,11 +21,11 @@ int main(int argc, char** argv) {
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("simple");
-	// diaplay callback
-	glutDisplayFunc(mydisplay);
 
 	// set OpenGL state
 	init();
+	// diaplay callback
+	glutDisplayFunc(mydisplay);
 
 	// enter event loop
 	glutMainLoop();
