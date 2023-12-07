@@ -14,6 +14,17 @@ void init() {
 	glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
 }
 
+void display(){
+   // 清空颜色缓冲区和深度缓冲区
+   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+   // 绘制图形
+   glutSolidSphere (1.0, 20, 16);
+   
+   // 刷新绘图命令队列
+   glFlush ();
+}
+
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
@@ -31,16 +42,27 @@ int main(int argc, char** argv) {
 	glutMainLoop();
 }
 ```
-- glutInit:allows application to get command line arguments and initializes system
-- gluInitDisplayMode:requests properties for the window (the rendering context)
+- `glutInit`: allows application to get command line arguments and initializes system
+- `gluInitDisplayMode`: requests properties for the window (the rendering context)
   - RGB color
   - Single buffering
   - Properties logically ORed together
-- glutWindowSize:in pixels
-- glutWindowPosition:from top-left corner of display
-- glutCreateWindow:create window with title “simple”
-- glutDisplayFunc:display callback
-- glutMainLoop:enter infinite event loop
+- `glutWindowSize`: in pixels
+- `glutWindowPosition`: from top-left corner of display
+- `glutCreateWindow`: create window with title “simple”
+- `init`: 初始化OpenGL的状态，例如设置清空颜色、投影矩阵等
+  - `glClearColor`: 设置清空颜色
+  - `glMatrixMode`: 设置矩阵类型
+    - `glMatrixMode(GL_PROJECTION)`: 设置当前操作为投影矩阵
+    - `glMatrixMode(GL_MODELVIEW)`: 设置当前操作为模型视图矩阵
+  - `glLoadIdentity`: 将当前矩阵重置为单位矩阵，通常与 `glMatrixMode(GL_PROJECTION)` 或 `glMatrixMode(GL_MODELVIEW)` 配合使用
+    - 使用 `glMatrixMode` 指定了要进行操作的矩阵类型后，调用该函数将该矩阵重置为单位矩阵
+    - 清除之前对该矩阵的所有变换，将其重置为初始状态，从而开始一个新的矩阵变换序列
+- `glutDisplayFunc`: display callback
+  - `mydisplay`: 绘制OpenGL场景
+    - `glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)`: 清空颜色缓冲区和深度缓冲区
+    - `glFlush`: 刷新绘图命令队列，并等待命令执行完成，不等待图形硬件将结果显示到屏幕上
+- `glutMainLoop`: enter infinite event loop
 
 ### （一）基本图形
 - GL_POINTS
@@ -61,6 +83,7 @@ glBegin(primType);
 glEnd();
 ```
 ```C++
+// 属于mydisplay
 void drawRhombus(GLfloat color[]) {
 	glBegin(GL_QUADS);
 	glColor3fv(color);
