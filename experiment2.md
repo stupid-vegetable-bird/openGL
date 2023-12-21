@@ -120,6 +120,32 @@ void drawRhombus(GLfloat color[]) {
 2. 画一个纯色的圆形
 
 # 三、实验过程
+1. 写出架构
+```C++
+#include<GL/glut.h>
+void init();
+void mydisplay();
 
+int main(int argc, char** argv) {
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	// define window properties
+	glutInitWindowSize(500, 500);
+	glutInitWindowPosition(0, 0);
+	glutCreateWindow("simple");
+
+	// set OpenGL state
+	init();
+	// diaplay callback
+	glutDisplayFunc(mydisplay);
+
+	// enter event loop
+	glutMainLoop();
+}
+```
+2. 根据题目要求对函数进行补充
+```C++
+
+```
 ---
 # 遇到的问题
