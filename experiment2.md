@@ -124,7 +124,7 @@ void drawRhombus(GLfloat color[]) {
 2. 画一个纯色的圆形
 
 # 三、实验过程
-1. 写出架构
+### 1. 写出架构
 ```C++
 #include<GL/glut.h>
 void init();
@@ -147,7 +147,7 @@ int main(int argc, char** argv) {
 	glutMainLoop();
 }
 ```
-2. 根据题目要求对函数进行补充
+### 2. 根据题目要求对函数进行补充
 ```C++
 void init() {
 	// black clear color, opaque window
@@ -206,7 +206,7 @@ void mydisplay() {
 }
 ```
 
-3. 完整代码
+### 3. 完整代码
 > 三角形和圆不可同时绘制，根据需要选用其中一个
 ```C++
 #include<GL/glut.h>
