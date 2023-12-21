@@ -161,6 +161,9 @@ void init() {
 ```
 
 ```C++
+'''
+添加头文件`#include<math.h>`
+'''
 void mydisplay() {
 	// 清空颜色缓冲区和深度缓冲区
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -192,10 +195,11 @@ float PI = 3.1415926f;
 float R = 0.8f;  //半径
 
 glBegin(GL_LINE_LOOP);
-for (int i = 0; i < n; i++) {
+for (int i = 0; i <= n; i++) {
 	glVertex2f(R*sin(2 * PI*i / n), R*cos(2 * PI*i / n));   //定义顶点
 }
 glEnd();
+
 
 '''
 画填充的圆
@@ -209,10 +213,11 @@ float R = 0.8f;  //半径
 
 glBegin(GL_TRIANGLE_FAN);
 glVertex2f(0.0, 0.0);  //添加圆心
-for (int i = 0; i < n; i++) {
+for (int i = 0; i <= n; i++) {
 	glVertex2f(R*sin(2 * PI*i / n), R*cos(2 * PI*i / n));   //定义顶点
 }
 glEnd();
+
 
 '''
 画完整的填充的圆
@@ -224,8 +229,8 @@ float R = 0.8f;  //半径
 
 glBegin(GL_TRIANGLE_FAN);
 glVertex2f(0.0, 0.0);  //添加圆心
-for (int i = 0; i < n; i++) {
-	glVertex2f(R*sin(2 * PI*i / n), R*cos(2 * PI*i / n));   //定义顶点
+for (int i = 0; i <= n; i++) {
+	glVertex2f(R*sin(2 * PI * i / n), R*cos(2 * PI * i / n));   //定义顶点
 }
 glEnd();
 ```
