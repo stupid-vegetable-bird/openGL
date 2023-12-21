@@ -148,7 +148,34 @@ int main(int argc, char** argv) {
 ```
 2. 根据题目要求对函数进行补充
 ```C++
+void init() {
+	// black clear color, opaque window
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 
+	// fill/draw with white
+	glColor3f(1.0, 1.0, 1.0);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+}
+```
+
+```C++
+void mydisplay() {
+	// 清空颜色缓冲区和深度缓冲区
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// 纯色的圆形
+	glBegin(GL_TRIANGLE_FAN);
+	glVertex2f(0.0, 0.0);
+	for (int i = 0; i <= 361; i++){
+		glVertex2f(0.8 * sin(2 * 3.14 * i / 360), 0.8 * cos(2 * 3.14 * i / 360));
+	}
+	glEnd();
+
+	// 刷新绘图命令队列
+	glFlush();
+}
 ```
 ---
 # 遇到的问题
