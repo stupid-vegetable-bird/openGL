@@ -179,3 +179,53 @@ void mydisplay() {
 ```
 ---
 # 遇到的问题
+### 1.如何绘制圆
+- 首先确定绘制的类型
+- 采用循环的方式重复画
+```C++
+'''
+画无填充的圆（只有线）
+原因：类型为GL_LINE_LOOP
+'''
+int n = 360;  //圆绘制次数
+float PI = 3.1415926f;
+float R = 0.8f;  //半径
+
+glBegin(GL_LINE_LOOP);
+for (int i = 0; i < n; i++) {
+	glVertex2f(R*sin(2 * PI*i / n), R*cos(2 * PI*i / n));   //定义顶点
+}
+glEnd();
+
+'''
+画填充的圆
+修改方式：类型为GL_TRIANGLE_FAN，并添加圆心
+问题：圆不完整
+原因：重复次数为360
+'''
+int n = 360;  //圆绘制次数
+float PI = 3.1415926f;
+float R = 0.8f;  //半径
+
+glBegin(GL_TRIANGLE_FAN);
+glVertex2f(0.0, 0.0);  //添加圆心
+for (int i = 0; i < n; i++) {
+	glVertex2f(R*sin(2 * PI*i / n), R*cos(2 * PI*i / n));   //定义顶点
+}
+glEnd();
+
+'''
+画完整的填充的圆
+修改方式：重复次数为361
+'''
+int n = 361;  //圆绘制次数
+float PI = 3.1415926f;
+float R = 0.8f;  //半径
+
+glBegin(GL_TRIANGLE_FAN);
+glVertex2f(0.0, 0.0);  //添加圆心
+for (int i = 0; i < n; i++) {
+	glVertex2f(R*sin(2 * PI*i / n), R*cos(2 * PI*i / n));   //定义顶点
+}
+glEnd();
+```
