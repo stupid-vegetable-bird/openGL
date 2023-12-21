@@ -58,6 +58,9 @@ int main(int argc, char** argv) {
   - `glLoadIdentity`: 将当前矩阵重置为单位矩阵，通常与 `glMatrixMode(GL_PROJECTION)` 或 `glMatrixMode(GL_MODELVIEW)` 配合使用
     - 使用 `glMatrixMode` 指定了要进行操作的矩阵类型后，调用该函数将该矩阵重置为单位矩阵
     - 清除之前对该矩阵的所有变换，将其重置为初始状态，从而开始一个新的矩阵变换序列
+  - `glOrtho`: 设置正交投影
+    - 定义了一个平行投影，使得渲染的对象在观察时不会产生透视变形
+    - 参数包括左边界、右边界、底部边界、顶部边界、近裁剪面和远裁剪面
 - `glutDisplayFunc`: display callback
   - `mydisplay`: 绘制OpenGL场景
     - `glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)`: 清空颜色缓冲区和深度缓冲区
