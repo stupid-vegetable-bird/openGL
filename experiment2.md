@@ -162,7 +162,7 @@ void init() {
 
 ```C++
 '''
-添加头文件`#include<math.h>`
+添加头文件#include<math.h>
 '''
 void mydisplay() {
 	// 清空颜色缓冲区和深度缓冲区
