@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	
 	MyColor.R=1.0; MyColor.G=1.0; MyColor.B=1.0;
 
-	glutCreateWindow("ʵ��2");     
+	glutCreateWindow("ÊµÑé2");     
 	
 	glutDisplayFunc(myDisplay);  
 	glutKeyboardFunc(&myKeyboard);
