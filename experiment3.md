@@ -120,7 +120,7 @@ void myreshape(GLint w, GLint h) {
 }
 ```
 - `glutReshapeFunc(myreshape)`
-- void myreshape(GLint w, GLint h)`
+- `void myreshape(GLint w, GLint h)`
 
 # 二、实验内容
 编写交互程序，要求：  
