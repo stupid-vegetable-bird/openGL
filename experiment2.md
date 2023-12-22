@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
 
 	// set OpenGL state
 	init();
-	// diaplay callback
+	// display callback
 	glutDisplayFunc(mydisplay);
 
 	// enter event loop
