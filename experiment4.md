@@ -11,21 +11,21 @@
 - `glMatrixMODE(GL_MODELVIEW or GL_PROJECTION)`：指定当前矩阵
 - `glLoadIdentity()`：其他矩阵
 
-### 3. Modeling Transformations：建模转换
+### 3. Modeling Transformations：模型变换（移动模型）
 - `glTranslate{fd}(x, y, z)`：移动物体
 - `glRotate{fd}(angle, x, y, z)`：围绕任意轴旋转对象
   - angle以度为单位
 - `glScale{fd}(x, y, z)`：放大（拉伸或缩小）或镜像物体
 - \[`glMultMatrix();`\]
 
-### 4. Viewing Transformations：查看变换
+### 4. Viewing Transformations：视点变换（三脚架的位置和方向）
 - `glTranslate()`
   - 例：`glTraslatef(0.0, 0.0, -5.0);`
 - `glRotate()`
 - `gluLookAt(eyex, eyey, eyz, aimx, aimy, aimz, upx, upy, upz)`
   - up矢量确定唯一的方向
 
-### 5. Projection Transformation：投影转换
+### 5. Projection Transformation：投影变换（相机的镜头）
 - 透视投影
   - `glFrustum(left, right, bottom, top, zNear, zFar)`
     - (left, bottom, -near),(right, top, -near)
@@ -73,7 +73,7 @@
   }
   ```
 
-### 7. Viewport Transformation：视口变换
+### 7. Viewport Transformation：视口变换（照片大小）
 - `glViewport(x, y, width, height)`
   - (x，y)：指定视口的左下角
   - (width, height)：视口矩形的大小
