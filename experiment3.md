@@ -129,7 +129,7 @@ void myreshape(GLint w, GLint h) {
 3. 使用键盘控制图形的位置
 4. 用户可以通过点击鼠标左右键来调整图形的类型和颜色
 
-参考代码，如下：
+[参考代码](Code/example/test03.cpp)，如下：
 ```C++
 // test00.cpp : Defines the entry point for the console application.
 //
