@@ -17,6 +17,9 @@ void OnMyMouse(int button, int state, int x, int y) {
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
 		/*自定义*/
 	}
+
+
+	mydisplay();
 }
 
 int main(int argc, char** argv) {
@@ -69,6 +72,9 @@ void OnMyKey(unsigned char key, int x, int y) {
 
 	// 写法二
 	if (key == 'Q' | key == 'q') exit(0);
+
+
+	mydisplay();
 }
 
 int main(int argc, char** argv) {
@@ -232,4 +238,5 @@ void myReshape(GLint w, GLint h) {
 - 解决方法：`mydisplay()`函数最后加上`glFlush();`
 
 ### 2. 鼠标/键盘事件无响应
-
+- 原因：改变后没有绘图
+- 解决方法：在`mykeyboard()`和`mymouse()`函数最后都加上`mydisplay();`
