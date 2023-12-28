@@ -98,6 +98,7 @@ void drawRhombus(GLfloat color[]) {
 	glEnd();
 }
 ```
+- 图形按照**逆时针**的方向绘制
 
 #### OpenGL Command Formats
 `glVertex3fv(v)`
