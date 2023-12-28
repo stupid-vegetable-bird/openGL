@@ -230,3 +230,6 @@ void myReshape(GLint w, GLint h) {
 ### 1. 能运行，界面全为白色
 - 原因：没有刷新绘图命令队列
 - 解决方法：`mydisplay()`函数最后加上`glFlush();`
+
+### 2. 鼠标/键盘事件无响应
+
