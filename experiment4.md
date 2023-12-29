@@ -131,13 +131,29 @@ int main(int argc, char** argv) {
 
 ### 5. Projection Transformation：投影变换（相机的镜头）
 - 透视投影
-  - `glFrustum(left, right, bottom, top, zNear, zFar)`
-    - (left, bottom, -near),(right, top, -near)
-  - `gluPerspective(fovy, aspect, zNear, zFar)`
+  - `void glFrustum(GLdouble left, GLdouble Right, GLdouble bottom, GLdouble top, GLdouble near, GLdouble far);`
+    - 该函数的参数只定义近裁剪平面的左下角点和右上角点的三维空间坐标，即(left, bottom, -near)和(right, top, -near)
+    - left，right：指定左边和右边垂直切面的坐标
+    - bottom，top：指定下边和上边水平切面的坐标
+    - near，far：指定近端和远端深度切面的距离，必须大于0
+      ![image](https://github.com/stupid-vegetable-bird/openGL/assets/97822083/dc322e4e-a96e-4d19-93a9-0692d2911384)
+
+  - `void gluPerspective (GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar)`
+    - fovy表示视野在Y-Z平面的角度，角度值，范围是\[0.0, 180.0\]
+      - 如果Fovy的值等于0，则什么也看不到
+      - Fovy值在0-180的范围内，值越小，视野范围越狭小，物体越近；值越大，视野范围越宽阔，物体越远
+      - 如果Fovy的值无限接近180，则什么也看不到
+      - Fovy值在180-360的范围内，渲染的图像反转了过来（不是镜像），相当于你和你看到的东西一起倒了过来（脑补一下你眼前的东西跟你一起头朝地，脚朝上）
+    - aspect表示裁剪面的宽w高h比，影响到视野的截面有多大
+    - zNear和zFar表示近远裁剪面到视点(沿Z负轴)的距离，必须大于0
+    ![image](https://github.com/stupid-vegetable-bird/openGL/assets/97822083/38db1722-1c2a-4366-abe8-4d3cf1e4dd35)
+
 - 正投影平行投影
-  - `glOrtho(left, right, bottom, top, zNear, zFar)`
+  - `void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble near, GLdouble far) `
     - `gluOrtho2D(left, right, bottom, top)`
     - 在Z值接近零时调用`glOrtho`
+    ![image](https://github.com/stupid-vegetable-bird/openGL/assets/97822083/a3721301-9179-42b3-92e4-09be39b390c9)
+
 - 投影变换经典使用（正投影）
   ```C++
   glMatrixMode( GL_PROJECTION );
