@@ -141,6 +141,44 @@ glMateriali(GL_FRONT,GL_SHININESS,shine);
 - `glShadeModel(GL_SMOOTH);`
 - 设置`glShadeModel(GL_FLAT);`第一个顶点的颜色确定整个多边形的颜色
 
+### （七）GLUT模型绘制函数
+> 本次实验用到的是 **实心茶壶`void glutSolidTeapot(GLdouble size);`** 
+
+```C++
+void glutWireSphere(GLdouble radius, GLint slices, GLint stacks);   // 线框球
+void glutSolidSphere(GLdouble radius, GLint slices, GLint stacks);  // 实心球
+
+void glutWireCube(GLdouble size);   // 线框立方体
+void glutSolidCube(GLdouble size);  // 实心立方体
+
+void glutWireTorus(GLdouble innerRadius, GLdouble outerRadius, GLint nsides, GLint rings);    // 线框圆环
+void glutSolidTorus(GLdouble innerRadius, GLdouble outerRadius, GLint nsides, GLint rings);   // 实心圆环
+
+void glutWireIcosahedron(void);    // 线框20面体
+void glutSolidIcosahedron(void);   // 实心20面体
+
+void glutWireOctahedron(void);    // 线框8面体 
+void glutSolidOctahedron(void);   // 实心8面体
+
+void glutWireTetrahedron(void);     // 线框4面体
+void glutSolidTetrahedron(void);    // 实心4面体
+
+void glutWireDodecahedron(GLdouble radius);    // 线框12面体
+void glutSolidDodecahedron(GLdouble radius);   // 实心12面体
+
+void glutWireCone(GLdouble radius, GLdouble height, GLint slices, GLint stacks);    // 线框圆锥体
+void glutSolidCone(GLdouble radius, GLdouble height, GLint slices, GLint stacks);   // 实心圆锥体
+
+void glutWireTeapot(GLdouble size);    // 线框茶壶
+void glutSolidTeapot(GLdouble size);   // 实心茶壶
+```
+
+- radius表示球体的半径
+- slices表示球体围绕z轴分割的数目
+- stacks表示球体沿着z轴分割的数目。
+
+绘制中心在模型坐标原点,半径为radius的球体,球体围绕z轴分割slices次,球体沿着z轴分割stacks次
+
 # 二、实验内容
 1. 场景中有三个光源，物体为茶壶或其它。
 2. 自行设定光源和物体材质的基本属性。
