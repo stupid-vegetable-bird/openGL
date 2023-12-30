@@ -289,7 +289,7 @@ void init() {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 
 
-	// set light点光源
+	// set light光源
 	glEnable(GL_LIGHTING);
 	// 全开
 	if (light == 3) {
