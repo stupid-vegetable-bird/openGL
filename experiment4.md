@@ -186,8 +186,7 @@ int main(int argc, char** argv) {
      glViewport( 0, 0, (GLsizei) w, (GLsizei) h );
      glMatrixMode( GL_PROJECTION );
      glLoadIdentity();
-     gluPerspective( 65.0, (GLfloat) w/h, 
-                     1.0, 100.0 );
+     gluPerspective( 65.0, (GLfloat) w/h, 1.0, 100.0 );
      glMatrixMode( GL_MODELVIEW );
      glLoadIdentity();
      glTranslatef( 0.0, 0.0, -5.0 );
@@ -196,7 +195,79 @@ int main(int argc, char** argv) {
 
 
 ### 7. Viewport Transformation：视口变换（照片大小）
-- `glViewport(x, y, width, height)`
+```C++
+#include "stdafx.h"
+#include <math.h>
+#define GLUT_DISABLE_ATEXIT_HACK
+#include "gl/glut.h"
+ 
+void myDisplay() {
+ glClear(GL_COLOR_BUFFER_BIT);
+ glColor3f(1.0, 0.0, 0.0);
+ //画分割线，分成四个视区  
+ glViewport(0, 0, 400, 400);
+ glBegin(GL_LINES);
+ glVertex2f(-1.0, 0);
+ glVertex2f(1.0, 0);
+ glVertex2f(0.0, -1.0);
+ glVertex2f(0.0, 1.0);
+ glEnd();
+ 
+ //定义在左下角的区域  
+ glColor3f(0.0, 1.0, 0.0);
+ glViewport(0, 0, 200, 200);
+ glBegin(GL_POLYGON);
+ glVertex2f(-0.5, -0.5);
+ glVertex2f(-0.5, 0.5);
+ glVertex2f(0.5, 0.5);
+ glVertex2f(0.5, -0.5);
+ glEnd();
+ 
+ //定义在右上角的区域  
+ glColor3f(0.0, 0.0, 1.0);
+ glViewport(200, 200, 200, 200);//注意，后面这两个参数是高度和宽度，而不是坐标  
+ glBegin(GL_POLYGON);
+ glVertex2f(-0.5, -0.5);
+ glVertex2f(-0.5, 0.5);
+ glVertex2f(0.5, 0.5);
+ glVertex2f(0.5, -0.5);
+ glEnd();
+ 
+ //定义在左上角的区域  
+ glColor3f(1.0, 0.0, 0.0);
+ glViewport(0, 200, 200, 200);  
+ glBegin(GL_POLYGON);
+ glVertex2f(-0.5, -0.5);
+ glVertex2f(-0.5, 0.5);
+ glVertex2f(0.5, 0.5);
+ glVertex2f(0.5, -0.5);
+ glEnd();
+ 
+ //定义在右下角  
+ glColor3f(1.0, 1.0, 1.0);
+ glViewport(200, 0, 200, 200);
+ glBegin(GL_POLYGON);
+ glVertex2f(-0.5, -0.5);
+ glVertex2f(-0.5, 0.5);
+ glVertex2f(0.5, 0.5);
+ glVertex2f(0.5, -0.5);
+ glEnd();
+ glFlush();
+ }
+ 
+int main(int argc, char *argv[]) {
+ glutInit(&argc, argv);
+ glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+ glutInitWindowPosition(100, 100);
+ glutInitWindowSize(400, 400);
+ glutCreateWindow("第一个OpenGL程序");
+ glutDisplayFunc(&myDisplay);
+ glutMainLoop();
+ return 0;
+}
+```
+
+- `glViewport(GLint x,GLint y,GLsizei width,GLsizei height)`
   - (x，y)：指定视口的左下角
   - (width, height)：视口矩形的大小
     - 通常与窗口大小相同
@@ -204,6 +275,14 @@ int main(int argc, char** argv) {
 
    
 ### 8. Matrix Stacks：矩阵堆栈
+```C++
+glLoadIdentity();
+glTranslatef(1,0,0);  //向右移动(1,0,0)
+glPushMatrix();       //保存当前位置
+glTranslatef(0,1,0);  //现在是(1,1,0)了
+glPopMatrix();        //这样，现在又回到(1,0,0)了
+```
+
 - `glPushMatrix();`
   - 复制当前矩阵，并将副本添加到堆栈顶部
   - 意思是 "记住你所在的位置"
@@ -213,17 +292,18 @@ int main(int argc, char** argv) {
 
  
 ### 9. Modelview & Projection Matrix Stack：模型视图和投影矩阵堆栈
+```C++
+glMatrixMode(GL_PROJECTION);
+glPushMatrix();          /*save the current projection*/ 
+glLoadIdentity();
+glOrtho(...);               /*set up for displaying help*/
+display_the_help(); 
+glPopMatrix();
+```
+
 - `glMatrixMode(GL_MODELVIEW);`
   - 用于构建分层模型
 - `glMatrixMode(GL_PROJECTION);`
   - 无组合投影
   - 只能深入两层
   - 例如，用于显示文本
-```C++
-glMatrixMode(GL_PROJECTION);
-glPushMatrix();          /*save the current projection*/ 
-glLoadIdentity();     
-glOrtho(...);               /*set up for displaying help*/
-display_the_help(); 
-glPopMatrix();
-```
