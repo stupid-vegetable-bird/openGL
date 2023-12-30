@@ -83,29 +83,33 @@ glLightfv(GL_LIGHT0, GL_SPECULAR, specular0);
 
 - 光源是几何对象，它的位置或方向受模型视图矩阵的影响
 #### 位置
-  - 对于GL_POSITION，其位置数组(x，y，z，w)定义了光源在空间中的位置。
-  - 采用齐次坐标形式
-  - 若w=1.0，指定的是一个空间位置。表示光源处于空间中(x，y，z)处，这时的光源称为定点光源
-  - 若w=0.0，指定的是一个平行光源，所给定的是入射光方向。表示光源位于无穷远处，此时光源称为定向光源，其所有光线几乎是相互平等的，如太阳。其光线方向由点（x，y，z）指向(0,0,0)
+- 对于`GL_POSITION`，其位置数组(x，y，z，w)定义了光源在空间中的位置
+- 采用齐次坐标形式
+- 若w=1.0，指定的是一个空间位置。表示光源处于空间中(x，y，z)处，这时的光源称为定点光源
+- 若w=0.0，指定的是一个平行光源，所给定的是入射光方向。表示光源位于无穷远处，此时光源称为定向光源，其所有光线几乎是相互平等的，如太阳。其光线方向由点（x，y，z）指向(0,0,0)
+
+#### 环境光强
+- 对于`GL_AMBIENT`，其光强数组(R，G，B，A)分别表示光源中含有红、绿、蓝三种光线的成分以及透明度值（一般为1）
 
 #### 全局环境光
   - `GLfloat global_ambient[]={0.2,0,0,1};`
   - `glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient);`
 
 #### 距离项，衰减
-  - 光强反比于距离的因子 a+bd+cd2
-  - 默认值：a=1.0, b=c=0.0
+- 光强反比于距离的因子 a+bd+cd2
+- 默认值：a=1.0, b=c=0.0
+- 环境光， 散射光，镜面光的强度都会衰减；发射光，全局环境光没有衰减
 - 改变方法
   - `glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 2.0);`
   - `glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 1.0);`
   - `glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.0);`
 
 #### 聚光灯
-  - `glLightfv()`
-    - 方向：`GL_SPOT_DIRECTION`
-    - 角度范围：`GL_SPOT_CUTOFF`
-    - 衰减指数：`GL_SPOT_EXPONENT`
-  ![image](https://github.com/stupid-vegetable-bird/openGL/assets/97822083/a13d0dad-46a2-44d1-b190-1978534402ca)
+- `glLightfv()`
+  - 方向：`GL_SPOT_DIRECTION`
+  - 角度范围：`GL_SPOT_CUTOFF`
+  - 衰减指数：`GL_SPOT_EXPONENT`
+![image](https://github.com/stupid-vegetable-bird/openGL/assets/97822083/a13d0dad-46a2-44d1-b190-1978534402ca)
 
 ### （五）材质属性
 ```C++
