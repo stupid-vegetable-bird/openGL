@@ -101,6 +101,60 @@ int main(int argc, char** argv) {
   - 功能键1：GLUT_KEY_F1
   - 向上方向键：GLUT_KEY_UP
   - `if (key == GLUT_KEY_F1) ...`
+- 特殊按键的响应函数是`glutSpecialFunc`
+  - 实现函数的格式是`void SpecialKey(GLint key,GLint x,GLint y)；`
+  
+	```C++
+	#include"freeglut.h"
+  
+	GLfloat xOffset=0.0f,yOffset=0.0f;
+	 
+	void myDisplay() {
+		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);	
+		glColor3f(0,1,0);
+
+		glViewport(xOffset,yOffset,400,400);
+		glRectf(160,160,240,240);
+	 
+		glutSwapBuffers();
+	}
+	 
+	void Init() {	
+		glClearColor(1,1,1,1);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluOrtho2D(0,400,0,400);
+	}
+	 
+	void SpecialKey(GLint key,GLint x,GLint y) {
+		if(key==GLUT_KEY_UP) {
+			yOffset+=10;
+		}	
+		if(key==GLUT_KEY_LEFT) {
+			xOffset-=10;
+		}
+		if(key==GLUT_KEY_DOWN) {
+			yOffset-=10;
+		}
+		if(key==GLUT_KEY_RIGHT) {
+			xOffset+=10;
+		}
+		myDisplay();
+	}
+	 
+	int main(int argc, char *argv[]) {      
+		glutInit(&argc, argv);   //初始化GLUT  
+		glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);    
+		glutInitWindowPosition(500, 200);      
+		glutInitWindowSize(400, 400);      
+		glutCreateWindow("OpenGL");   
+		Init();   
+		glutDisplayFunc(&myDisplay);   //回调函数   
+		glutSpecialFunc(&SpecialKey);
+		glutMainLoop();         
+	}   
+	```
+  
 - `glutGetModifiers(...)`探测是否按下了
   - `GLUT_ACTIVE_SHIFT`
   - `GLUT_aCTIVE_CTRL`
