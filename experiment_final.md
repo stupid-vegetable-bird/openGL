@@ -12,6 +12,7 @@
 4. 要求写代码主要函数介绍书（实验报告）
 
 # 二、实验过程
+[stb_image库下载](Code/experiment/stb_image.h)
 ```C++
 #include <stdio.h>
 #include <GL/glut.h>
