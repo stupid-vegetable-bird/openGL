@@ -28,9 +28,6 @@ void loadTexture(const char* filename, GLuint* textureID) {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         stbi_image_free(image);
     }
-    else {
-        // 处理加载失败的情况
-    }
 }
 
 void init() {
