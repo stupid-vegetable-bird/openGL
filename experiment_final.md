@@ -319,7 +319,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("Classroom");
     printf("操作说明：\n\
 1、单击鼠标左键显示/隐藏墙和天花板\n\
-2、按动键盘上下左右方向键和F1、F2键进行投影变化\n\
+2、按动键盘上下左右方向键和F1、F2键进行投影变换\n\
 3、按F5键刷新还原");
 
     // 初始化
